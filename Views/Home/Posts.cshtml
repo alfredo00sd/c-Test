@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Prueba.Models.UserPosts>
+
+@{
+    ViewBag.Title = "Posts";
+}
+
+@{ 
+    <h2> ViewBag.Data </h2>
+}
+
+<p>
+    @Html.ActionLink("Guardar datos", "Create", "Posts")
+    @*Html.ActionLink("Guardar mensajes", "Save", "Posts")*@
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Body)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Body)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", "Posts", new { id = item.Id }) |
+                    @Html.ActionLink("Detalles", "Details", "Posts", new { id = item.Id }) |
+                    @Html.ActionLink("Eliminar", "Delete", "Posts", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+    <tfoot>
+        <tr><td>Posts registrados: </td></tr>
+    </tfoot>
+</table>
